@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import React from 'react';
 
 const AddUser = (props) => {
@@ -31,7 +32,7 @@ const AddUser = (props) => {
         value="Submit"
       />
     </form>
-  )
+  );
 };
 
 export default AddUser;

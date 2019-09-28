@@ -1,5 +1,6 @@
+/* jshint esversion: 6 */
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import UsersList from '../UsersList';
 
@@ -10,14 +11,14 @@ const users = [
     'active': true,
     'email': 'fred@fred.com',
     'id': 1,
-    'username': 'fred'
+    'username': 'fred',
   },
   {
     'active': true,
     'email': 'homer@simpson.org',
     'id': 2,
-    'username': 'homer'
-  }
+    'username': 'homer',
+  },
 ];
 
 test('UsersList renders properly', () => {

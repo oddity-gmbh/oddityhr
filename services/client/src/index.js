@@ -1,4 +1,14 @@
-import React, { Component } from 'react';
+/* jshint esversion: 6 */
+/* eslint "require-jsdoc": ["error", {
+    "require": {
+        "FunctionDeclaration": false,
+        "MethodDefinition": false,
+        "ClassDeclaration": false,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+    }
+}]*/
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import UsersList from './components/UsersList';
@@ -14,32 +24,38 @@ class App extends Component {
     };
     this.addUser = this.addUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  };
+  }
   componentDidMount() {
     this.getUsers();
-  };
+  }
   handleChange(event) {
     const obj = {};
     obj[event.target.name] = event.target.value;
     this.setState(obj);
-  };
+  }
   addUser(event) {
     event.preventDefault();
     const data = {
       username: this.state.username,
-      email: this.state.email
+      email: this.state.email,
     };
     axios.post(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`, data)
-    .then((res) => {
-            this.getUsers();
-            this.setState({ username: '', email: '' });
-          })
-    .catch((err) => { console.log(err); });
-  };
+        .then((res) => {
+          this.getUsers();
+          this.setState({username: '', email: ''});
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  }
   getUsers() {
     axios.get(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`)
-    .then((res) => { this.setState({ users: res.data.data.users }); })
-    .catch((err) => { console.log(err); });
+        .then((res) => {
+          this.setState({users: res.data.data.users});
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   }
   render() {
     return (
@@ -62,11 +78,11 @@ class App extends Component {
           </div>
         </div>
       </section>
-    )
+    );
   }
 };
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );
